@@ -1,3 +1,5 @@
+# Derived from rocket-chip bootrom/Makefile (Apache-2.0 / BSD-3-Clause).
+
 bootrom_img = bootrom.img
 
 GCC=riscv64-unknown-elf-gcc

@@ -1,3 +1,6 @@
+// Derived from rocket-chip bootrom/bootrom.S (Apache-2.0 / BSD-3-Clause).
+// Changed: _hang removed, _debug_loop added.
+
 #define DRAM_BASE   0x80000000
 
 .section .text.start, "ax", @progbits

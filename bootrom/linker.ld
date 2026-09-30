@@ -1,3 +1,6 @@
+/* Derived from rocket-chip bootrom/linker.ld (Apache-2.0 / BSD-3-Clause).
+   Changed: .text.debug_loop added. */
+
 SECTIONS
 {
     ROM_BASE = 0x10000; /* ... but actually position independent */

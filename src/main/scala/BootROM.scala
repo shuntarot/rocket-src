@@ -1,3 +1,6 @@
+// Derived from rocket-chip src/main/scala/devices/tilelink/BootROM.scala
+// (SiFive, Apache-2.0). Changed: the reset vector is not driven here.
+
 package cpuss
 
 import chisel3._
