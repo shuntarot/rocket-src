@@ -14,7 +14,7 @@ import freechips.rocketchip.prci.ClockSinkDomain
 import java.nio.ByteBuffer
 import java.nio.file.{Files, Paths}
 
-object HNSBootROM {
+object MiniRocketBootROM {
   /** Replace reset vector in rocketchip BootROM.attach
     * reset vector is selected by boot_mode pin
     */

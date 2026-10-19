@@ -7,9 +7,9 @@ object Main extends App {
     val emitArgs = Array(
       "--emission-options=disableMemRandomization,disableRegisterRandomization"
     )
-    implicit val p = new HNSRocketConfig()
+    implicit val p = new MiniRocketConfig()
     (new chisel3.stage.ChiselStage).emitVerilog(
-      new HNSCore(),
+      new MiniRocket(),
       emitArgs ++ args,
       Seq(
         RunFirrtlTransformAnnotation(new RemoveSimOnly),
