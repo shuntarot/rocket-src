@@ -28,3 +28,9 @@ object LinuxMain extends App {
     implicit val p = new LinuxRocketConfig()
     Emit(new LinuxRocket(), args)
 }
+
+// The same top, LinuxRocket, with LinuxRocketCFlushConfig
+object LinuxCFlushMain extends App {
+    implicit val p = new LinuxRocketCFlushConfig()
+    Emit(new LinuxRocket(), args)
+}

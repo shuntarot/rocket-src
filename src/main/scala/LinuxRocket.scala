@@ -39,6 +39,26 @@ class LinuxRocketConfig extends Config(
   new BaseConfig
 )
 
+/** LinuxRocket for checkpoint and restore tests: the data cache is blocking,
+  * and cflush.d.l1 x0 (0xfc000073; M-mode, or the debug program buffer)
+  * writes it back and invalidates it. The non-blocking data cache of
+  * LinuxRocketConfig takes cflush.d.l1 as a no-op, so a debugger cannot get
+  * its dirty lines out to memory; the blocking one can, but misses cost more.
+  * Use LinuxRocketConfig to measure performance.
+  */
+class LinuxRocketCFlushConfig extends Config(
+  new WithCFlush ++
+  new WithNonblockingL1(0) ++
+  new LinuxRocketConfig
+)
+
+/** Decode cflush.d.l1. */
+class WithCFlush extends Config((site, here, up) => {
+  case RocketTilesKey => up(RocketTilesKey, site) map { r =>
+    r.copy(core = r.core.copy(haveCFlush = true))
+  }
+})
+
 class WithLinuxMemPort(b: BigInt, n: BigInt) extends Config((site, here, up) => {
   case ExtMem => up(ExtMem, site).map(
     x => x.copy(master = x.master.copy(base = b, size = n, idBits = 6)))
